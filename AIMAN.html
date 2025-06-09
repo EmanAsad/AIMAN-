@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiman Riaz - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #3d6cb9 50%, #4f7dc9 75%, #6190d9 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #8b5fb5 100%);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+            animation: pulse 2s ease-in-out infinite alternate;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+        }
+
+        .degree-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .degree-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .year-badge {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .animated-text {
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatShape 8s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(15px) rotate(240deg); }
+        }
+
+        .specializations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .spec-badge {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .spec-badge:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .aspirations-grid, .social-work {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .aspiration-item, .social-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .aspiration-item:hover, .social-item:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+
+        .asp-icon, .social-icon {
+            font-size: 2.2rem;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .asp-content h4, .social-content h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .asp-content p, .social-content p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .dual-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .research-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .research-item:hover {
+            transform: translateX(8px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+        }
+
+        .research-icon {
+            font-size: 1.8rem;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+        }
+
+        .research-item h4 {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .research-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .sports-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .sport-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: 500;
+        }
+
+        .sport-item:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .sport-icon {
+            font-size: 1.5rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .exp-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .exp-content h4 {
+            color: white;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .exp-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .achievements {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .achievement-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 50%;
+        }
+
+        .achievement-text {
+            color: white;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+            
+            .degree-info {
+                flex-direction: column;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .specializations {
+                justify-content: center;
+            }
+
+            .experience-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Floating Shapes -->
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="hero-section">
+            <div class="profile-image">
+                AR
+            </div>
+            
+            <h1 class="name animated-text">AIMAN RIAZ</h1>
+            
+            <p class="title animated-text">Medical Student</p>
+            
+            <div class="info-card animated-text">
+                <div class="degree-info">
+                    <span class="degree-badge">4th Year Student</span>
+                    <span class="year-badge">Bachelor of Medicine</span>
+                </div>
+            </div>
+
+            <!-- Medical Specializations -->
+            <div class="info-card animated-text">
+                <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;">Medical Interests</h3>
+                <div class="specializations">
+                    <span class="spec-badge">Gastroenterology</span>
+                    <span class="spec-badge">Internal Medicine</span>
+                    <span class="spec-badge">Pathology</span>
+                    <span class="spec-badge">Clinical Research</span>
+                </div>
+            </div>
+
+            <!-- USMLE & Aspirations -->
+            <div class="info-card animated-text">
+                <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;">Professional Aspirations</h3>
+                <div class="aspirations-grid">
+                    <div class="aspiration-item">
+                        <div class="asp-icon">🇺🇸</div>
+                        <div class="asp-content">
+                            <h4>USMLE Aspirant</h4>
+                            <p>Preparing for United States Medical Licensing Examination</p>
+                        </div>
+                    </div>
+                    <div class="aspiration-item">
+                        <div class="asp-icon">🏥</div>
+                        <div class="asp-content">
+                            <h4>Residency Goals</h4>
+                            <p>Internal Medicine & Gastroenterology</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Work & Leadership -->
+            <div class="info-card animated-text">
+                <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;">Leadership & Social Impact</h3>
+                <div class="social-work">
+                    <div class="social-item">
+                        <div class="social-icon">👥</div>
+                        <div class="social-content">
+                            <h4>Character Building Society</h4>
+                            <p>Active Member - Community Development & Youth Mentorship</p>
+                        </div>
+                    </div>
+                    <div class="social-item">
+                        <div class="social-icon">❤️</div>
+                        <div class="social-content">
+                            <h4>Healthcare Volunteer</h4>
+                            <p>Free Medical Camps & Health Awareness Programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research & Sports -->
+            <div class="dual-section">
+                <div class="info-card animated-text research-card">
+                    <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;">Research Work</h3>
+                    <div class="research-items">
+                        <div class="research-item">
+                            <span class="research-icon">🔬</span>
+                            <div>
+                                <h4>Gastroenterology Research</h4>
+                                <p>IBD Biomarkers Study</p>
+                            </div>
+                        </div>
+                        <div class="research-item">
+                            <span class="research-icon">📊</span>
+                            <div>
+                                <h4>Clinical Trial</h4>
+                                <p>Co-investigator Role</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card animated-text sports-card">
+                    <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600;">Sports & Wellness</h3>
+                    <div class="sports-items">
+                        <div class="sport-item">
+                            <span class="sport-icon">🏸</span>
+                            <span>Badminton</span>
+                        </div>
+                        <div class="sport-item">
+                            <span class="sport-icon">🏃‍♀️</span>
+                            <span>Running</span>
+                        </div>
+                        <div class="sport-item">
+                            <span class="sport-icon">🧘‍♀️</span>
+                            <span>Yoga</span>
+                        </div>
+                        <div class="sport-item">
+                            <span class="sport-icon">🏊‍♀️</span>
+                            <span>Swimming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clinical Experience -->
+            <div class="info-card animated-text">
+                <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem;">Clinical Experience</h3>
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <div class="exp-icon">🏥</div>
+                        <div class="exp-content">
+                            <h4>Hospital Rotations</h4>
+                            <p>Pediatrics, Surgery, Medicine</p>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-icon">🔬</div>
+                        <div class="exp-content">
+                            <h4>Laboratory Work</h4>
+                            <p>Pathology & Microbiology</p>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-icon">👥</div>
+                        <div class="exp-content">
+                            <h4>Patient Care</h4>
+                            <p>Clinical Assessment & Treatment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Achievements -->
+            <div class="info-card animated-text">
+                <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem;">Academic Excellence</h3>
+                <div class="achievements">
+                    <div class="achievement-item">
+                        <span class="achievement-icon">📚</span>
+                        <span class="achievement-text">USMLE Aspirant</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🏆</span>
+                        <span class="achievement-text">Research Anthusistic</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">📝</span>
+                        <span class="achievement-text">Good academic record</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size between 2-6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                
+                // Random animation duration
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mouse movement effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.info-card');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const cardX = (rect.left + rect.width / 2) / window.innerWidth;
+                const cardY = (rect.top + rect.height / 2) / window.innerHeight;
+                
+                const deltaX = (mouseX - cardX) * 10;
+                const deltaY = (mouseY - cardY) * 10;
+                
+                card.style.transform = `translate(${deltaX}px, ${deltaY}px) translateY(-5px)`;
+            });
+        });
+
+        // Reset card positions when mouse leaves
+        document.addEventListener('mouseleave', () => {
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach(card => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animated-text');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Profile image click effect
+        document.querySelector('.profile-image').addEventListener('click', function() {
+            this.style.transform = 'scale(1.1) rotate(360deg)';
+            this.style.transition = 'transform 0.6s ease';
+            
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 600);
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createParticles();
+            animateOnScroll();
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Add dynamic color changing to profile initials
+        setInterval(() => {
+            const profileImage = document.querySelector('.profile-image');
+            const colors = [
+                'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
+                'linear-gradient(45deg, #a8edea, #fed6e3)',
+                'linear-gradient(45deg, #ff9a9e, #fecfef)',
+                'linear-gradient(45deg, #667eea, #764ba2)',
+                'linear-gradient(45deg, #f093fb, #f5576c)'
+            ];
+            
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            profileImage.style.background = randomColor;
+        }, 3000);
+    </script>
+</body>
+</html>
